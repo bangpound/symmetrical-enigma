@@ -1,0 +1,22 @@
+version: '3'
+services:
+  consul:
+    image: consul
+    ports:
+      - 8500:8500
+      - 8600:8600
+
+  web:
+    build:
+      context: ./docker/web
+    volumes:
+      - ./public:/usr/local/apache2/htdocs
+    ports:
+      - 8000:80
+    depends_on:
+      - fpm
+
+  fpm:
+    image: php:7.1-fpm-alpine
+    volumes:
+      - .:/var/www/html
