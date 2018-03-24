@@ -8,6 +8,7 @@
         "sensiolabs/consul-php-sdk": "^3.0",
         "symfony/console": "^4.0",
         "symfony/flex": "^1.0",
+        "symfony/form": "^4.0",
         "symfony/framework-bundle": "^4.0",
         "symfony/lts": "^4@dev",
         "symfony/monolog-bundle": "^3.2",
