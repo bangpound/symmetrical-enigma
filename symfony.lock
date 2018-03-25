@@ -23,6 +23,15 @@
     "doctrine/lexer": {
         "version": "v1.0.1"
     },
+    "easycorp/easy-log-handler": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "70062abc2cd58794d2a90274502f81b55cd9951b"
+        }
+    },
     "guzzlehttp/guzzle": {
         "version": "6.3.0"
     },
@@ -97,6 +106,18 @@
     },
     "symfony/debug": {
         "version": "v4.0.6"
+    },
+    "symfony/debug-bundle": {
+        "version": "3.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.3",
+            "ref": "71d29aaf710fd59cd3abff2b1ade907ed73103c6"
+        }
+    },
+    "symfony/debug-pack": {
+        "version": "v1.0.4"
     },
     "symfony/dependency-injection": {
         "version": "v4.0.6"
@@ -193,6 +214,9 @@
     },
     "symfony/polyfill-php72": {
         "version": "v1.7.0"
+    },
+    "symfony/profiler-pack": {
+        "version": "v1.0.3"
     },
     "symfony/property-access": {
         "version": "v4.0.6"
