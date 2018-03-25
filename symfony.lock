@@ -80,9 +80,6 @@
             "ref": "aaddfdf43cdecd4cf91f992052d76c2cadc04543"
         }
     },
-    "sensiolabs/consul-php-sdk": {
-        "version": "v3.0.0"
-    },
     "symfony/apache-pack": {
         "version": "1.0",
         "recipe": {

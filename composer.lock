@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b29dfaf372a7f56f1f3f90d1cc9bd9e7",
+    "content-hash": "30a37779a20690cbbca10a9769a12324",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1034,49 +1034,6 @@
                 "controllers"
             ],
             "time": "2018-02-14T08:40:54+00:00"
-        },
-        {
-            "name": "sensiolabs/consul-php-sdk",
-            "version": "v3.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sensiolabs/consul-php-sdk.git",
-                "reference": "0116be2e8dc3cf736c6712e6d30781c5d6ff180a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/consul-php-sdk/zipball/0116be2e8dc3cf736c6712e6d30781c5d6ff180a",
-                "reference": "0116be2e8dc3cf736c6712e6d30781c5d6ff180a",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "^6.0",
-                "php": ">=5.5",
-                "psr/log": "~1.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "SensioLabs\\Consul\\": "Consul"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Grégoire Pineau",
-                    "email": "lyrixx@lyrixx.info"
-                }
-            ],
-            "description": "SDK to talk with consul.io API",
-            "time": "2017-07-25T10:59:44+00:00"
         },
         {
             "name": "symfony/apache-pack",
