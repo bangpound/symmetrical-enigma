@@ -15,9 +15,15 @@ services:
       - 8000:80
     depends_on:
       - fpm
+      - consul
+    command: ["/bin/envconsul", "-consul-addr", "consul:8500", "-prefix", "httpd", "httpd-foreground"]
 
   fpm:
     build:
       context: ./docker/fpm
     volumes:
       - .:/var/www/html
+    depends_on:
+      - consul
+    entrypoint: ["/bin/envconsul", "-consul-addr", "consul:8500", "-prefix", "php", "/usr/local/bin/docker-php-entrypoint"]
+    command: ["php-fpm"]
