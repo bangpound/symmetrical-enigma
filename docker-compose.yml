@@ -17,6 +17,7 @@ services:
       - fpm
 
   fpm:
-    image: php:7.1-fpm-alpine
+    build:
+      context: ./docker/fpm
     volumes:
       - .:/var/www/html
