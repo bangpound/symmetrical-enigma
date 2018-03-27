@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ path('kv_list_top') }}">Top</a></li>
+                {% set parts = [] %}
+                {% if key and key.keyParts | length > 0 %}
+                    {% for part in key.keyParts %}
+                        {% set parts = parts | merge([part]) %}
+                        {% set pathKey = parts | join('/') ~ '/' %}
+                        {% if app.request.get('key') == pathKey %}
+                            <li class="breadcrumb-item active" aria-current="page">{{ part }}</li>
+                        {% else %}
+                            <li class="breadcrumb-item"><a href="{{ path('kv_list', { key: pathKey }) }}">{{ part }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </ol>
+        </nav>
+        <div class="row">
+            <div class="col-sm">
+                <ul class="list-group">
+                    {% for key in keys %}
+                        <li class="list-group-item"><a href="{{ path('kv_list', { key: key.key }) }}">{{ key.keyWithoutParent }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-sm">
+                {{ form(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

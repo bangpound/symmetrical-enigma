@@ -1,6 +1,7 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
+    locale: 'en'
 
 services:
     # default configuration for services in *this* file
@@ -31,5 +32,36 @@ services:
             $config:
                 base_uri: '%env(CONSUL_HTTP_ADDR)%'
                 http_errors: false
+                allow_redirects: false
+                handler: '@GuzzleHttp\HandlerStack'
 
     GuzzleHttp\ClientInterface: '@GuzzleHttp\Client'
+
+    GuzzleHttp\HandlerStack:
+        factory: ['GuzzleHttp\HandlerStack', 'create']
+        calls:
+            - ['push', [ !service { class: Closure, factory: [GuzzleHttp\Middleware, log], arguments: { $logger: '@logger', $formatter: '@GuzzleHttp\MessageFormatter' }, tags: [{ name: monolog.logger, channel: guzzle }] } ] ]
+
+    GuzzleHttp\MessageFormatter:
+        arguments:
+            - '@=constant("GuzzleHttp\\MessageFormatter::DEBUG")'
+
+    SensioLabs\Consul\ServiceFactory:
+        arguments:
+            $logger: '@logger'
+        tags:
+            - { name: monolog.logger, channel: consul }
+
+    SensioLabs\Consul\Client:
+        arguments:
+            $logger: '@logger'
+        tags:
+            - { name: monolog.logger, channel: consul }
+
+    SensioLabs\Consul\ClientInterface: '@SensioLabs\Consul\Client'
+
+    SensioLabs\Consul\Services\KV:
+        factory: ['@SensioLabs\Consul\ServiceFactory', 'get']
+        arguments: ['SensioLabs\Consul\Services\KVInterface']
+
+    SensioLabs\Consul\Services\KVInterface: '@SensioLabs\Consul\Services\KV'
